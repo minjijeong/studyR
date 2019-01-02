@@ -1,0 +1,50 @@
+---
+title: 'R마크다운파일'
+subtitle: "나의 첫번째 R마크다운"
+author: "알파고"
+date: "2018-09-27"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    number_sections: true
+    code_folding: show
+## 키 : 값
+---
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 데이타셋 로딩
+```{r mtcars, echo=TRUE}
+data(mtcars)
+mtcars
+```
+
+
+### 구분 추가 단축키
+### - Ctrl + Alt + i
+
+
+# mtcars 시각화
+* using mtcars's factors, make a plot graph.
+```{r}
+plot(mtcars)
+```
+
+# 차량무게에 따른 연비 
+## 산점도 매트릭스와 차량무게 - 연비간 산점도 2개 그래프 작성
+```{r}
+plot(mtcars)
+plot(mpg ~ wt, mtcars)
+```
+
+## 내부 구조 파악 
+
+### utils패키지와 str() 함수이용
+```{r}
+str(mtcars)
+```
+
+### 
+

@@ -1,0 +1,227 @@
+---
+title: "R 기초문법"
+author: "정민지"
+date: "2018-10-01"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    toc_float:
+      collapsed: false
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    toc_depth: 3
+    number_section: true
+mainfont: D2Coding
+---
+## 데이타 불러오기
+### base 데이타 셋 불러오기
+```{r}
+library(datasets)
+data("mtcars")
+print(mtcars)
+```
+
+## 기본연산
+```{r}
+# An addition
+5 + 5 
+
+# A subtraction
+5 - 5 
+
+# A multiplication
+3 * 5
+
+ # A division
+(5 + 5) / 2 
+
+# Exponentiation
+2^3
+
+# Modulo
+15%%3
+```
+
+
+
+## 변수할당 
+```{r}
+t <- 42
+t
+```
+
+
+## 데이타포맷
+### 데이타 타입 확인
+```{r}
+my_numeric <- 42
+my_character <- "universe"
+my_logical <- FALSE 
+
+# Check class of my_numeric
+class(my_numeric)
+
+# Check class of my_character
+class(my_character)
+
+# Check class of my_logical
+class(my_logical)
+```
+
+
+
+### 벡터
+```{r}
+numeric_vector <- c(1, 10, 49)
+numeric_vector
+
+character_vector <- c("a", "b", "c", "d", "e")
+character_vector
+
+boolean_vector <-c(TRUE, FALSE,TRUE)
+boolean_vector
+
+# vector 사용법
+vec <- character_vector[3]
+vec
+
+mid <- character_vector[c(2:4)]
+mid
+```
+### 팩터(Factor)
+벡터를 출력한 이후 level도 출력한다. 
+*레벨(level): factor변수의 unique 값 - Group by와 동일한 기능
+```{r}
+# options
+## order : levels 순서
+## levels : 임의 지정 가능
+temperature_vector <- c("High", "Low", "High","Low", "Medium")
+factor_temperature_vector <- factor(temperature_vector, 
+                                    order = TRUE, 
+                                    levels = c("Low", "Medium", "High"))
+factor_temperature_vector
+
+# force to change levels which is not fit in 
+## have to be same size with origin levels,
+levels(factor_temperature_vector) <- c("J","K","M")
+factor_temperature_vector
+```
+
+
+###
+###
+#### 벡터 컬럼명 부여 
+```{r}
+# Poker winnings from Monday to Friday
+poker_vector <- c(140, -50, 20, -120, 240)
+# Roulette winnings from Monday to Friday
+roulette_vector <- c(-24, -50, 100, -350, 10)
+# The variable days_vector
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+ 
+# Assign the names of the day to roulette_vector and poker_vector
+names(poker_vector) <-   days_vector
+poker_vector
+names(roulette_vector) <- days_vector
+roulette_vector
+
+# vector using column names
+poker_vector[c("Monday","Thursday")]
+```
+
+
+###
+###
+#### 벡터 연산
+```{r}
+A_vector <- c(1, 2, 3)
+B_vector <- c(4, 5, 6)
+
+# Take the sum of A_vector and B_vector
+total_vector <- A_vector + B_vector
+  
+# Print out total_vector
+total_vector
+
+# vector : single number 
+t_vector <- B_vector[B_vector > 4]
+t_vector
+
+```
+
+
+
+
+### 행렬(Matrix)
+#### 행렬 
+```{r}
+# declear matrix
+## byrow : TRUE - record order
+num.m <- matrix(1:9,byrow =TRUE, nrow = 3)
+## byrow : FALSE - tupple
+matrix(1:9,byrow =FALSE, nrow = 3)
+
+# set names 
+colnames(num.m) <- c("1st","2nd","3rd")
+rownames(num.m) <- c("4th","5th","6th")
+
+num.m
+
+# 4th Row 
+num.m[1,]
+
+# 2nd Col
+num.m[,2]
+
+# 1st & 5th
+num.m[2,1]
+```
+
+
+###
+#### 행렬
+##### bind 함수
+###### 행렬 컬럼 병합
+```{r}
+box_office <- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix <- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c("A New Hope", "The Empire Strikes Back", "Return of the Jedi"), 
+                                           c("US", "non-US")))
+
+# The worldwide box office figures
+worldwide_vector <- rowSums(star_wars_matrix)
+
+# cbind - column bind
+all_wars_matrix <- cbind(star_wars_matrix,worldwide_vector)
+all_wars_matrix
+
+# rbind - row bind
+all_wars_matrix2 <- rbind(star_wars_matrix,worldwide_vector)
+all_wars_matrix2
+
+```
+
+
+### 데이타 프레임(Data Frame)
+####기본구조
+```{r}
+library(datasets)
+data("mtcars")
+# 전체데이타 확인
+mtcars
+
+# 데이타 확인 
+head(mtcars)
+
+# 구조확인
+str(mtcars)
+
+```
+
+
+
+
+

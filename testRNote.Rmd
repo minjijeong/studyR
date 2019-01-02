@@ -1,0 +1,29 @@
+---
+title: "Plot Study"
+output: html_notebook
+---
+#1. 데이타셋 생성 
+##1.1 test
+###1.1.1 test2
+####1.1.1.1
+#####1.1.1.1.1
+######1.1.1.1.1.1
+```{r}
+library(datasets)
+data("mtcars")
+mtcars
+
+rownames(mtcars)
+row.names(mtcars)
+
+glimpse(mtcars)
+```
+
+2. plot 함수 사용하여 데이타 분석
+2.1. cyl - mpg 그래프분석 
+- 실린더가 클수록 연비가 떨어진다. 
+```{r}
+plot(mtcars)
+plot(mtcars$cyl, mtcars$mpg)
+```
+

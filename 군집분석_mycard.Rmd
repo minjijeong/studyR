@@ -1,0 +1,50 @@
+---
+title: "군집분석"
+author: "정민지"
+date: "2018-10-02"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    code_folding: hide
+    toc_float:
+      collapsed: false
+  pdf_document:
+    latex_engine: xelatex
+    toc: true
+    toc_depth: 3
+    number_section: true
+mainfont: D2Coding
+---
+```{r}
+#초기설정
+Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_131")
+```
+########################################################################
+#### 군집분석용 카드사용고객 raw 데이터 준비 ==> 계층적 군집분석으로 실시
+
+# usage(월평균 카드사용횟수, 회)
+# amount(1회평균 카드사용금액, 만원)
+# period(쇼핑몰 사이트 이용시간, 분)
+# variety(상품구매 다양성)
+
+card <- read.csv("mycard.csv", header=T, sep=",",
+                 stringsAsFactors = F, # 팩터화 없이 일반적 로딩 
+                 strip.white = T, # 데이터 요소별 좌우 공백 제거 
+                 na.strings = "") # 데이터 중 ""표시부분 NA로 인식
+boxplot(card) 
+
+## period 항목 제외처리 해야되나? 아니면 scaling 처리 해야하는지? 
+
+
+```{r}
+setwd("C:\\workspaceR")
+card <- read.csv("mycard.csv", header=T, sep=",",
+                stringsAsFactors = F, # 팩터화 없이 일반적 로딩 
+                strip.white = T, # 데이터 요소별 좌우 공백 제거 
+                na.strings = "") # 데이터 중 ""표시부분 NA로 인식
+print(card)
+boxplot(card) 
+
+```
